@@ -28,7 +28,7 @@ class App extends Component {
   
   state = {
     navModel: navigationModel,
-    selectedSidemenu: '/'
+    selectedSidemenu: ['/']
   };
 
   render() {

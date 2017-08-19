@@ -7,9 +7,15 @@ import PropTypes      from 'prop-types';
 import {
   Row,
   Col,
-  Button
+  Button,
+  Form,
+  Input,
+  Icon
 }                     from 'antd';
+const FormItem = Form.Item;
+
 import auth           from '../../services/auth';
+
 
 class Login extends PureComponent {
   static propTypes= {
@@ -18,6 +24,13 @@ class Login extends PureComponent {
     location: PropTypes.object.isRequired,
     history:  PropTypes.object.isRequired,
 
+    // antd Form.create
+    form: PropTypes.shape({
+      getFieldDecorator:  PropTypes.func.isRequired,
+      validateFields:     PropTypes.func.isRequired,
+      getFieldValue:      PropTypes.func.isRequired
+    }).isRequired,
+    
     // views props:
     currentView: PropTypes.string.isRequired,
     enterLogin:  PropTypes.func.isRequired,
@@ -36,11 +49,6 @@ class Login extends PureComponent {
     isLogging:       false
   }
 
-  state = {
-    email:          '',
-    password:       ''
-  };
-
   componentDidMount() {
     const {
       enterLogin,
@@ -58,141 +66,105 @@ class Login extends PureComponent {
 
   render() {
     const {
-      email,
-      password
-    } = this.state;
-
-    const {
+      form: { getFieldDecorator },
       isLogging
     } = this.props;
 
     return (
-      <div className="content">
-        <Row>
-          <Col
-            md={{ span: 4, offset: 4 }}
-            xs={{ span: 10, offset: 1 }}
+      <Row
+        className="login-form"
+      >
+        <Col
+          md={{ span: 6, offset: 8 }}
+          xs={{ span: 18, offset: 3 }}
+        >
+          <Form
+            onSubmit={this.handlesOnLogin}
+            className="login-form"
           >
-            <form
-              className="form-horizontal"
-              noValidate>
-              <fieldset>
-                <legend>
-                  Login
-                </legend>
+            <FormItem>
+              {
+                getFieldDecorator(
+                  'eMail', 
+                  {
+                    rules: [{ required: true, message: 'Please input your email!' }]
+                  }
+                )(
+                  <Input
+                    prefix={<Icon type="user" style={{ fontSize: 13 }} />}
+                    placeholder="Email"
+                  />
+                )
+              }
+            </FormItem>
+            <FormItem>
+              {
+                getFieldDecorator(
+                  'password', 
+                  {
+                    rules: [{ required: true, message: 'Please input your Password!' }]
+                  }
+                )(
+                  <Input
+                    prefix={<Icon type="lock" style={{ fontSize: 13 }} />}
+                    type="password"
+                    placeholder="Password"
+                  />
+                )
+              }
+            </FormItem>
 
-                <div className="form-group">
-                  <label
-                    htmlFor="inputEmail"
-                    className="col-lg-2 control-label">
-                    Email
-                  </label>
-                  <div className="col-lg-10">
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="inputEmail"
-                      placeholder="Email"
-                      value={email}
-                      onChange={this.handlesOnEmailChange}
-                    />
-                  </div>
-                </div>
-
-                <div className="form-group">
-                  <label
-                    htmlFor="inputPassword"
-                    className="col-lg-2 control-label">
-                    Password
-                  </label>
-                  <div className="col-lg-10">
-                    <input
-                      type="password"
-                      className="form-control"
-                      id="inputPassword"
-                      placeholder="Password"
-                      value={password}
-                      onChange={this.handlesOnPasswordChange}
-                    />
-                  </div>
-                </div>
-                <div className="form-group">
-                  <Col
-                    lg={10}
-                    lgOffset={2}
-                  >
-                    <Button 
-                      type="primary"
-                      loading={isLogging}
-                      disabled={isLogging}
-                      onClick={this.handlesOnLogin}>
-                      {
-                        isLogging
-                          ?
-                          <span>
-                            login in...
-                          </span>
-                          :
-                          <span>
-                            Login
-                          </span>
-                      }
-                    </Button>
-                  </Col>
-                </div>
-              </fieldset>
-            </form>
-          </Col>
-        </Row>
-        <Row>
-          <Col
-            md={{ span: 4, offset: 4 }}
-            xs={{ span: 10, offset: 1 }}         
-          >
-            <Button
-              type="primary"
-              onClick={this.goHome}
-            >
-              back to home
-            </Button>
-          </Col>
-        </Row>
-      </div>
+            <FormItem>
+              <Button
+                loading={isLogging}
+                disabled={isLogging}
+                type="primary"
+                htmlType="submit"
+                className="login-form-button"
+              >
+                Log in
+              </Button>
+            </FormItem>
+          </Form>
+        </Col>
+      </Row>
     );
   }
 
-  handlesOnEmailChange = (event) => {
-    event.preventDefault();
-    // should add some validator before setState in real use cases
-    this.setState({ email: event.target.value.trim() });
-  }
-
-  handlesOnPasswordChange = (event) => {
-    event.preventDefault();
-    // should add some validator before setState in real use cases
-    this.setState({ password: event.target.value.trim() });
-  }
-
-  handlesOnLogin = async (event) => {
+  handlesOnLogin = async (
+    event: SyntheticEvent<>
+  ): Promise<any> => {
     if (event) {
       event.preventDefault();
     }
-    
+
     const {
+      form: {
+        validateFields,
+        getFieldValue
+      },
       history,
       logUserIfNeeded
     } = this.props;
 
-    const {
-      email,
-      password
-    } = this.state;
+    let isValidForm = true;
+    validateFields(
+      (err /* , values */) => {
+        if (err) {
+          isValidForm = false;
+        }
+      }
+    );
+
+    if (!isValidForm) {
+      return false;
+    }
 
     const userLogin = {
-      login:    email,
-      password: password
+      login:    getFieldValue('eMail'),
+      password: getFieldValue('password')
     };
-
+    
     try {
       const response = await logUserIfNeeded(userLogin);
       const {
@@ -224,4 +196,4 @@ class Login extends PureComponent {
   }
 }
 
-export default Login;
+export default Form.create({})(Login);
