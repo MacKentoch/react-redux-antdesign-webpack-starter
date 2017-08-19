@@ -5,7 +5,7 @@ import React, {
 }                     from 'react';
 import PropTypes      from 'prop-types';
 import AnimatedView   from '../../components/animatedView/AnimatedView';
-import { Link }       from 'react-router-dom';
+import { Button }     from 'antd';
 
 class Home extends PureComponent {
   static propTypes= {
@@ -50,17 +50,27 @@ class Home extends PureComponent {
             Starter
           </h1>
           <p>
-            <Link
-              className="btn btn-success btn-lg"
-              to={'/about'}>
-              <i className="fa fa-info" />
-              &nbsp;
+            <Button
+              type="primary"
+              onClick={this.handlesOnGoAbout}
+            >
               go to about
-            </Link>
+            </Button>
           </p>
         </div>
       </AnimatedView>
     );
+  }
+
+  handlesOnGoAbout = (
+    event: SyntheticEvent<>
+  ): void => {
+    if (event) {
+      event.preventDefault();
+      const { history } = this.props;
+
+      history.push('/about');
+    }
   }
 }
 
