@@ -127,8 +127,31 @@ class Login extends PureComponent {
             </FormItem>
           </Form>
         </Col>
+        <Col
+          md={{ span: 6, offset: 8 }}
+          xs={{ span: 18, offset: 3 }}
+        >
+          <Button
+            type="default"
+            onClick={this.handlesOnBackToHome}
+          >
+            <Icon type="home" />
+            back to Home
+          </Button>
+        </Col>
       </Row>
     );
+  }
+
+  handlesOnBackToHome = (
+    event: SyntheticEvent<>
+  ) => {
+    if (event) {
+      event.preventDefault();
+    }
+    const { history } = this.props;
+
+    history.push('/');
   }
 
   handlesOnLogin = async (
