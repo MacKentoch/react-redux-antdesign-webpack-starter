@@ -1,0 +1,48 @@
+{
+  "brand":      "React Redux Bootstrap Starter",
+  "sideLinks":   [
+    {
+      "label":      "Home",
+      "icon":       "home",
+      "link":       "/"
+    },
+    {
+      "label":      "Protected",
+      "icon":       "lock",
+      "link":       "/protected"
+    },
+    {
+      "label":      "About",
+      "icon":       "info-circle-o",
+      "link":       "/about"
+    },
+    {
+      "label":      "Disconnect",
+      "icon":       "logout",
+      "link":       "/login"
+    }
+  ],
+  "leftLinks":  [],
+  "rightLinks": [
+    {
+      "label":      "Home",
+      "icon":       "home",
+      "link":       "/"
+    },
+    {
+      "label":      "Protected",
+      "icon":       "lock",
+      "link":       "/protected"
+    },
+    {
+      "label":      "About",
+      "icon":       "info",
+      "link":       "/about"
+    },
+    {
+      "label":      "Disconnect",
+      "icon":       "signout",
+      "link":       "/login"
+    }
+  ]
+}

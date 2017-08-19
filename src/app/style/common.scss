@@ -1,0 +1,12 @@
+@import "./_vars";
+@import "./_mixins";
+
+
+.invisible {
+  opacity: 0;
+}
+
+.view-enter {
+  @include fade-in(0s, 0.7s, ease-in);
+   z-index: 9999;
+ }
