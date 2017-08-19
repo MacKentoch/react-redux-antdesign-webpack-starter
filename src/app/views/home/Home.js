@@ -5,7 +5,10 @@ import React, {
 }                     from 'react';
 import PropTypes      from 'prop-types';
 import AnimatedView   from '../../components/animatedView/AnimatedView';
-import { Button }     from 'antd';
+import {
+  Button,
+  Icon
+}     from 'antd';
 
 class Home extends PureComponent {
   static propTypes= {
@@ -54,6 +57,7 @@ class Home extends PureComponent {
               type="primary"
               onClick={this.handlesOnGoAbout}
             >
+              <Icon type="info-circle-o" />
               go to about
             </Button>
           </p>
