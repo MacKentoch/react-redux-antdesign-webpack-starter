@@ -87,6 +87,9 @@ without hot reload:
 npm run serve-prod
 ```
 
+## To fix
+
+- [ ] production bundle
 
 ## License
 

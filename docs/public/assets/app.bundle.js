@@ -4729,7 +4729,7 @@ var Login = function (_PureComponent) {
 
   function Login() {
     var _ref,
-        _this2 = this;
+        _this3 = this;
 
     var _temp, _this, _ret;
 
@@ -4739,7 +4739,11 @@ var Login = function (_PureComponent) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Login.__proto__ || Object.getPrototypeOf(Login)).call.apply(_ref, [this].concat(args))), _this), _this.handlesOnLogin = function () {
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Login.__proto__ || Object.getPrototypeOf(Login)).call.apply(_ref, [this].concat(args))), _this), _this.handlesOnBackToHome = function () {
+      var _this2;
+
+      return (_this2 = _this).__handlesOnBackToHome__REACT_HOT_LOADER__.apply(_this2, arguments);
+    }, _this.handlesOnLogin = function () {
       var _ref2 = _asyncToGenerator(regeneratorRuntime.mark(function _callee(event) {
         var _this$props, _this$props$form, validateFields, getFieldValue, history, logUserIfNeeded, isValidForm, userLogin, response, _response$payload$dat, token, user;
 
@@ -4801,16 +4805,16 @@ var Login = function (_PureComponent) {
                 return _context.stop();
             }
           }
-        }, _callee, _this2, [[7, 17]]);
+        }, _callee, _this3, [[7, 17]]);
       }));
 
       return function (_x) {
         return _ref2.apply(this, arguments);
       };
     }(), _this.goHome = function () {
-      var _this3;
+      var _this4;
 
-      return (_this3 = _this).__goHome__REACT_HOT_LOADER__.apply(_this3, arguments);
+      return (_this4 = _this).__goHome__REACT_HOT_LOADER__.apply(_this4, arguments);
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
@@ -4894,8 +4898,35 @@ var Login = function (_PureComponent) {
               )
             )
           )
+        ),
+        _react2.default.createElement(
+          _col2.default,
+          {
+            md: { span: 6, offset: 8 },
+            xs: { span: 18, offset: 3 }
+          },
+          _react2.default.createElement(
+            _button2.default,
+            {
+              type: 'default',
+              onClick: this.handlesOnBackToHome
+            },
+            _react2.default.createElement(_icon2.default, { type: 'home' }),
+            'back to Home'
+          )
         )
       );
+    }
+  }, {
+    key: '__handlesOnBackToHome__REACT_HOT_LOADER__',
+    value: function __handlesOnBackToHome__REACT_HOT_LOADER__(event) {
+      if (event) {
+        event.preventDefault();
+      }
+      var history = this.props.history;
+
+
+      history.push('/');
     }
   }, {
     key: '__goHome__REACT_HOT_LOADER__',
