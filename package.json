@@ -76,6 +76,7 @@
     "json-loader": "^0.5.4",
     "less": "^2.7.2",
     "less-loader": "^4.0.5",
+    "less-vars-to-js": "^1.2.0",
     "node-sass": "^4.5.3",
     "nodemon": "^1.11.0",
     "postcss": "^6.0.8",

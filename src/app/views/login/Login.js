@@ -5,6 +5,7 @@ import React, {
 }                     from 'react';
 import PropTypes      from 'prop-types';
 import {
+  Layout,
   Row,
   Col,
   Button,
@@ -71,75 +72,96 @@ class Login extends PureComponent {
     } = this.props;
 
     return (
-      <Row
-        className="login-form"
-      >
-        <Col
-          md={{ span: 6, offset: 8 }}
-          xs={{ span: 18, offset: 3 }}
-        >
-          <Form
-            onSubmit={this.handlesOnLogin}
+      <Layout style={{ height: '100vh' }}>
+        <Layout.Content style={{ margin: '24px 16px 0' }}>
+        <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
+          <Row
             className="login-form"
           >
-            <FormItem>
-              {
-                getFieldDecorator(
-                  'eMail', 
-                  {
-                    rules: [{ required: true, message: 'Please input your email!' }]
-                  }
-                )(
-                  <Input
-                    prefix={<Icon type="user" style={{ fontSize: 13 }} />}
-                    placeholder="Email"
-                  />
-                )
-              }
-            </FormItem>
-            <FormItem>
-              {
-                getFieldDecorator(
-                  'password', 
-                  {
-                    rules: [{ required: true, message: 'Please input your Password!' }]
-                  }
-                )(
-                  <Input
-                    prefix={<Icon type="lock" style={{ fontSize: 13 }} />}
-                    type="password"
-                    placeholder="Password"
-                  />
-                )
-              }
-            </FormItem>
-
-            <FormItem>
-              <Button
-                loading={isLogging}
-                disabled={isLogging}
-                type="primary"
-                htmlType="submit"
-                className="login-form-button"
-              >
-                Log in
-              </Button>
-            </FormItem>
-          </Form>
-        </Col>
-        <Col
-          md={{ span: 6, offset: 8 }}
-          xs={{ span: 18, offset: 3 }}
-        >
-          <Button
-            type="default"
-            onClick={this.handlesOnBackToHome}
+            <Col
+              md={{ span: 6, offset: 8 }}
+              xs={{ span: 18, offset: 3 }}
+            >
+              <div className="login-icon">
+                <Icon
+                  type="user"
+                  style={{ fontSize: '142px' }}
+                />
+              </div>
+            </Col>
+          </Row>
+          <Row
+            className="login-form"
           >
-            <Icon type="home" />
-            back to Home
-          </Button>
-        </Col>
-      </Row>
+            <Col
+              md={{ span: 6, offset: 8 }}
+              xs={{ span: 18, offset: 3 }}
+            >
+              <Form
+                onSubmit={this.handlesOnLogin}
+                className="login-form"
+              >
+                <FormItem>
+                  {
+                    getFieldDecorator(
+                      'eMail', 
+                      {
+                        rules: [{ required: true, message: 'Please input your email!' }]
+                      }
+                    )(
+                      <Input
+                        prefix={<Icon type="user" style={{ fontSize: 13 }} />}
+                        placeholder="Email"
+                      />
+                    )
+                  }
+                </FormItem>
+                <FormItem>
+                  {
+                    getFieldDecorator(
+                      'password', 
+                      {
+                        rules: [{ required: true, message: 'Please input your Password!' }]
+                      }
+                    )(
+                      <Input
+                        prefix={<Icon type="lock" style={{ fontSize: 13 }} />}
+                        type="password"
+                        placeholder="Password"
+                      />
+                    )
+                  }
+                </FormItem>
+
+                <FormItem>
+                  <Button
+                    loading={isLogging}
+                    disabled={isLogging}
+                    type="primary"
+                    htmlType="submit"
+                    className="login-form-button"
+                  >
+                    Log in
+                  </Button>
+                </FormItem>
+              </Form>
+            </Col>
+            <Col
+              md={{ span: 6, offset: 8 }}
+              xs={{ span: 18, offset: 3 }}
+            >
+              <Button
+                type="default"
+                onClick={this.handlesOnBackToHome}
+              >
+                <Icon type="home" />
+                back to Home
+              </Button>
+            </Col>
+          </Row>
+        </div>
+        </Layout.Content>
+      </Layout>
     );
   }
 

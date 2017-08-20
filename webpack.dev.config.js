@@ -1,11 +1,21 @@
 const webpack           = require('webpack');
 const path              = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const fs                = require('fs');
+const lessToJs          = require('less-vars-to-js');
 
 const assetsDir       = path.join(__dirname, 'docs/public/assets');
 const nodeModulesDir  = path.join(__dirname, 'node_modules');
 const vendorsDir      = path.join(__dirname, 'src/app/vendors');
 const indexFile       = path.join(__dirname, 'src/app/index.js');
+const themeVars       = path.join(__dirname, 'src/app/style/antd-theme-overrides.less');
+
+const themeVariables = lessToJs(fs.readFileSync(themeVars, 'utf8'));
+
+/* eslint-disable quotes */
+// lessToJs does not support @icon-url: "some-string", so we are manually adding it to the produced themeVariables js object here
+// themeVariables['@icon-url'] = "'//localhost:3000/src/style/fonts/antd-fonts/iconfont'";
+/* eslint-enable quotes */
 
 const SPLIT_STYLE = true;
 
@@ -74,14 +84,14 @@ const config = {
           use: [
             {loader: 'css-loader', options: { importLoaders: 1 }},
             'postcss-loader',
-            'less-loader'
+            { loader: 'less-loader', options: { modifyVars: themeVariables }}
           ]
         })
         : [
           'style-loader',
           {loader: 'css-loader', options: { importLoaders: 1 }},
           'postcss-loader',
-          'less-loader'
+          { loader: 'less-loader', options: { modifyVars: themeVariables }}
         ]
       },
       {
