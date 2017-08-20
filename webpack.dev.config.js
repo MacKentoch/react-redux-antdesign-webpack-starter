@@ -22,7 +22,7 @@ const config = {
       'prop-types',
       'react-tap-event-plugin',
       'react-hot-loader',
-      'antd',
+      // 'antd',
       'babel-polyfill',
       'redux',
       'react-router-redux',

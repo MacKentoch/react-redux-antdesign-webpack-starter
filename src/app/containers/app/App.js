@@ -13,6 +13,7 @@ import navigationModel        from '../../config/navigation.json';
 import MainRoutes             from '../../routes/MainRoutes';
 
 const { Header, Content, Footer, Sider } = Layout;
+const MenuItem = Menu.Item; // workaround to fix production bundle error: "Menu not found"
 
 class App extends Component {
   static propTypes = {
@@ -60,13 +61,13 @@ class App extends Component {
                   link
                 }
               ) => (
-                <Menu.Item
+                <MenuItem
                   key={link}>
                   <Icon type={icon} />
                   <span className="nav-text">
                     { label }
                   </span>
-                </Menu.Item>
+                </MenuItem>
               )
             )
           }
