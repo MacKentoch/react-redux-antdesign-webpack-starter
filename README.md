@@ -29,7 +29,7 @@ React + React-Router 4 + Redux + Ant Design + Webpack 3 with Hot Reload and redu
 **Tool chain:**
 - babel 6+
 - eslint
-- webpack 2
+- webpack 3
 - hot reload
 - loaders
   - `js` / `jsx`

@@ -38,7 +38,7 @@ class Home extends PureComponent {
       <AnimatedView>
         <div>
           <h1>
-            ReactJS + Bootstrap
+            ReactJS + Redux + Ant Design
           </h1>
           <h2>
             with Hot Reload!!!

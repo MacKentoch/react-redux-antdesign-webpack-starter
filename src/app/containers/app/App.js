@@ -80,7 +80,7 @@ class App extends Component {
             </div>
           </Content>
           <Footer style={{ textAlign: 'center' }}>
-            Ant Design ©2016 Created by Ant UED
+            "React+ Redux+ Ant Design + Webpack Starter" made with <span style={{ color: '#CF000F' }}>&hearts;</span> by Erwan Datin
           </Footer>
         </Layout>
       </Layout>
