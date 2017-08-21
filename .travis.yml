@@ -1,14 +1,14 @@
 ---
 language: node_js
 node_js:
-- 8
+- "8"
 sudo: false
 cache:
+  yarn: true
   directories:
-  - node_modules
-before_install:
-    - export DISPLAY=:99.0
-    - sh -e /etc/init.d/xvfb start
+    - node_modules
 before_script:
-    - npm install
-after_success: npm run coverage
+    - yarn install
+    - yarn global add jest
+script:
+  - yarn run test
