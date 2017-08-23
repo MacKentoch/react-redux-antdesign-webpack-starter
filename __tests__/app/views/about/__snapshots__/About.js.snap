@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`About component renders as expected 1`] = `
+<div>
+  <section
+    className="content view-enter"
+  >
+    <h1>
+      About
+    </h1>
+  </section>
+</div>
+`;
