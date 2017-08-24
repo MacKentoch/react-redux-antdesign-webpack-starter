@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home component renders as expected 1`] = `
+<div>
+  <section
+    className="content view-enter"
+  >
+    <div>
+      <h1>
+        ReactJS + Redux + Ant Design
+      </h1>
+      <h2>
+        with Hot Reload!!!
+      </h2>
+      <h2>
+        and React Router v4
+      </h2>
+      <h2>
+        and webpack 3.x
+      </h2>
+      <h1>
+        Starter
+      </h1>
+      <p>
+        <button
+          className="ant-btn ant-btn-primary"
+          onClick={[Function]}
+          type="button"
+        >
+          <i
+            className="anticon anticon-info-circle-o"
+          />
+          <span>
+            go to about
+          </span>
+        </button>
+      </p>
+    </div>
+  </section>
+</div>
+`;

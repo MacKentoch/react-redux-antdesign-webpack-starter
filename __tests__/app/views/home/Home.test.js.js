@@ -1,16 +1,17 @@
 // @flow weak
 
 import React            from 'react';
-import About            from '../../../../src/app/views/about/About';
+import Home             from '../../../../src/app/views/home/Home';
 import renderer         from 'react-test-renderer'; // needed both for snpashot testing but also to prevent errors from enzyme
 import { 
   MemoryRouter
 }                       from 'react-router';
 import {
-  shallow
+  shallow,
+  mount
 }                       from 'enzyme';
 
-describe('About component', () => {
+describe('Home component', () => {
   it('renders as expected', () => {
     const mockProps = {
       // react-router 4:
@@ -18,62 +19,62 @@ describe('About component', () => {
       location: {},
       history: {},
       // views:
-      enterAbout: () => {},
-      leaveAbout: () => {},
+      enterHome: () => {},
+      leaveHome: () => {},
       currentView: 'About'
     };
 
     const component = renderer.create(
       <div>
         <MemoryRouter>
-          <About {...mockProps} />
+          <Home {...mockProps} />
         </MemoryRouter>
       </div>
     ).toJSON();
     expect(component).toMatchSnapshot();
   });
 
-  it('triggers enterAbout on mount', () => {
-    const mockEnterAbout = jest.fn();
+  it('triggers enterHome on mount', () => {
+    const mockEnterHome = jest.fn();
     const mockProps = {
       // react-router 4:
       match: {},
       location: {},
       history: {},
       // views:
-      enterAbout: mockEnterAbout,
-      leaveAbout: () => {},
-      currentView: 'About'
+      enterHome: mockEnterHome,
+      currentView: 'Home',
+      leaveHome: () => {}
     };
 
     /* eslint-disable no-unused-vars */
-    const wrapper = shallow(
-      <About {...mockProps} />
+    // shallow would not call componentDidMount, so we use mount is that case:
+    const wrapper = mount(
+      <Home {...mockProps} />
     );
 
-    // expect(mockEnterAbout).toBeCalled();
-    expect(mockEnterAbout.mock.calls.length).toBe(1);
+    expect(mockEnterHome.mock.calls.length).toBe(1);
   });
 
-  it('triggers leaveAbout on unMount', () => {
-    const mockLeaveAbout = jest.fn();
+  it('triggers leaveHome on unMount', () => {
+    const mockLeaveHome = jest.fn();
     const mockProps = {
       // react-router 4:
       match: {},
       location: {},
       history: {},
       // views:
-      enterAbout: () => {},
-      currentView: 'About',
-      leaveAbout: mockLeaveAbout
+      enterHome: () => {},
+      currentView: 'Home',
+      leaveHome: mockLeaveHome
     };
 
     const wrapper = shallow(
-      <About {...mockProps} />
+      <Home {...mockProps} />
     );
 
     wrapper.unmount();
-    // expect(mockLeaveAlert).toBeCalled();
-    expect(mockLeaveAbout.mock.calls.length).toBe(1);
+
+    expect(mockLeaveHome.mock.calls.length).toBe(1);
   });
 });
