@@ -26,7 +26,7 @@ class App extends Component {
     currentView: PropTypes.string
 
   };
-  
+
   state = {
     navModel: navigationModel,
     selectedSidemenu: ['/']
@@ -81,7 +81,7 @@ class App extends Component {
             </div>
           </Content>
           <Footer style={{ textAlign: 'center' }}>
-            "React+ Redux+ Ant Design + Webpack Starter" made with <span style={{ color: '#CF000F' }}>&hearts;</span> by Erwan Datin
+            "React+ Redux+ Ant Design + Webpack Starter" made with <span style={{ color: '#CF000F' }}>❤️</span> by Erwan Datin
           </Footer>
         </Layout>
       </Layout>

@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PageNotFound component renders as expected 1`] = `
+<div>
+  <section
+    className="content view-enter"
+  >
+    <div>
+      <h1>
+        Sorry this page does not exists...
+      </h1>
+    </div>
+  </section>
+</div>
+`;
