@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Protected component renders as expected 1`] = `
+<div>
+  <section
+    className="content view-enter"
+  >
+    <h1>
+      Protected view
+    </h1>
+    <h3>
+      If you can read, it means you are authenticated
+    </h3>
+  </section>
+</div>
+`;
