@@ -6,6 +6,8 @@ import userInfosMockData  from '../../mock/userInfosMock.json';
 import getLocationOrigin  from '../../services/utils/getLocationOrigin';
 import auth               from '../../services/auth';
 
+const dateFormat = 'DD/MM/YYYY HH:mm';
+
 // --------------------------------
 // CONSTANTS
 // --------------------------------
@@ -28,7 +30,7 @@ const initialState = {
   // actions details
   isFetching:      false,
   isLogging:       false,
-  time:            '',
+  actionTime:       '',
 
   // userInfos
   id:              '',
@@ -44,7 +46,7 @@ export default function (
   state = initialState,
   action
 ) {
-  const currentTime = moment().format();
+  const currentTime = moment().format(dateFormat);
 
   switch (action.type) {
 
@@ -113,7 +115,7 @@ export default function (
 
   case RECEIVED_USER_INFOS_DATA:
     const userInfos = action.payload.data;
-    
+
     return {
       ...state,
       actionTime: currentTime,
@@ -154,13 +156,13 @@ export function disconnectUser() {
 }
 
 /**
- * 
- * check if user is connected by looking at locally stored 
+ *
+ * check if user is connected by looking at locally stored
  * - token
  * - user fonrmation
- * 
+ *
  * @export
- * @returns {action} action 
+ * @returns {action} action
  */
 export function checkUserIsConnected() {
   const token           = auth.getToken();
@@ -181,7 +183,7 @@ export function checkUserIsConnected() {
  *  user login
  *
  * @param {string} login user login
- * @param {string} password usepasswordr 
+ * @param {string} password usepasswordr
  * @returns {Promise<any>} promised action
  */
 function logUser(

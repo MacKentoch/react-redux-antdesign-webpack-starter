@@ -8,7 +8,7 @@ import {
   Route,
   Redirect,
   withRouter
-}                         from "react-router-dom";
+}                         from 'react-router-dom';
 import auth               from '../../services/auth';
 
 class PrivateRoute extends Component {
@@ -48,11 +48,11 @@ class PrivateRoute extends Component {
 
   isAuthenticated() {
     const checkUserHasId = user => user && user.id;
-    const user            = auth.getUserInfo() 
-                            ? auth.getUserInfo() 
+    const user            = auth.getUserInfo()
+                            ? auth.getUserInfo()
                             : null;
-    const isAuthenticated = auth.getToken() && checkUserHasId(user) 
-                            ? true 
+    const isAuthenticated = auth.getToken() && checkUserHasId(user)
+                            ? true
                             : false;
     return isAuthenticated;
   }
