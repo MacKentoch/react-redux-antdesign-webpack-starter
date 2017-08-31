@@ -11,10 +11,6 @@ const themeVars   = path.join(__dirname, 'src/app/style/antd-theme-overrides.les
 
 const themeVariables = lessToJs(fs.readFileSync(themeVars, 'utf8'));
 
-/* eslint-disable quotes */
-// lessToJs does not support @icon-url: "some-string", so we are manually adding it to the produced themeVariables js object here
-// themeVariables['@icon-url'] = "'//localhost:3000/src/style/fonts/antd-fonts/iconfont'";
-/* eslint-enable quotes */
 
 const config = {
   devtool: 'cheap-module-source-map',

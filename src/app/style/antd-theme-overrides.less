@@ -2,5 +2,12 @@
 // Available theme variables can be found in
 // https://github.com/ant-design/ant-design/blob/master/components/style/themes/default.less
 
-@primary-color: #F39C12; // we are overriding antd vars (mechanics behind: see webpacks files and less-to-js plugin)
-@icon-url:"'/assets/fonts/iconfont/iconfont'";
+// //////////////////////////////////////////////////////////////////////////////////////////////
+// NOTE: we are overriding antd vars (mechanics behind: see webpacks files and less-to-js plugin)
+// //////////////////////////////////////////////////////////////////////////////////////////////
+
+// here we use local antd icons (see antd-iconfont npm package that helps)
+@icon-url: "~antd-iconfont/iconfont";
+
+// style vars:
+@primary-color: #F39C12;

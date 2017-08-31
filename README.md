@@ -15,6 +15,7 @@ React + React-Router 4 + Redux + Ant Design + Webpack 3 with Hot Reload and redu
 - React JS (15.6.x+ - [github :link:](https://github.com/facebook/react))
 - ant design (2.12 [github :link:](https://github.com/ant-design/ant-design/))
  - with built-in *theme customization* (change vars in [antd-theme-overrides.less](https://github.com/MacKentoch/react-redux-antdesign-webpack-starter/tree/master/src/app/style/antd-theme-overrides.less) to customize)
+ - icon font are locally loaded
 - Redux (*as you application grows managing state will be a serious concern, save pain with Redux*)
 - React-Redux (*Redux is not specific to ReactJS, you could easily use it with Angular2 for instance*)
 - redux-devtools-extension ([github :link:](https://github.com/zalmoxisus/redux-devtools-extension#redux-devtools-extension))
