@@ -13,6 +13,7 @@ import {
   Input,
   Icon
 }                     from 'antd';
+
 const FormItem = Form.Item;
 
 import auth           from '../../services/auth';
@@ -31,7 +32,7 @@ class Login extends PureComponent {
       validateFields:     PropTypes.func.isRequired,
       getFieldValue:      PropTypes.func.isRequired
     }).isRequired,
-    
+
     // views props:
     currentView: PropTypes.string.isRequired,
     enterLogin:  PropTypes.func.isRequired,
@@ -56,7 +57,7 @@ class Login extends PureComponent {
       disconnectUser
     } = this.props;
 
-    disconnectUser(); // diconnect user: remove token and user info 
+    disconnectUser(); // diconnect user: remove token and user info
     enterLogin();
   }
 
@@ -104,7 +105,7 @@ class Login extends PureComponent {
                 <FormItem>
                   {
                     getFieldDecorator(
-                      'eMail', 
+                      'eMail',
                       {
                         rules: [{ required: true, message: 'Please input your email!' }]
                       }
@@ -119,7 +120,7 @@ class Login extends PureComponent {
                 <FormItem>
                   {
                     getFieldDecorator(
-                      'password', 
+                      'password',
                       {
                         rules: [{ required: true, message: 'Please input your Password!' }]
                       }
@@ -209,7 +210,7 @@ class Login extends PureComponent {
       login:    getFieldValue('eMail'),
       password: getFieldValue('password')
     };
-    
+
     try {
       const response = await logUserIfNeeded(userLogin);
       const {

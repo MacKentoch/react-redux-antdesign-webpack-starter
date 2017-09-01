@@ -19205,7 +19205,7 @@ var Login = function (_PureComponent) {
           disconnectUser = _props.disconnectUser;
 
 
-      disconnectUser(); // diconnect user: remove token and user info 
+      disconnectUser(); // diconnect user: remove token and user info
       enterLogin();
     }
   }, {
