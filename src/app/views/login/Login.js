@@ -5,16 +5,17 @@ import React, {
 }                     from 'react';
 import PropTypes      from 'prop-types';
 import {
-  Layout,
   Row,
   Col,
   Button,
   Form,
   Input,
-  Icon
+  Icon,
+  Layout
 }                     from 'antd';
 
 const FormItem = Form.Item;
+const { Content } = Layout;
 
 import auth           from '../../services/auth';
 
@@ -74,7 +75,7 @@ class Login extends PureComponent {
 
     return (
       <Layout style={{ height: '100vh' }}>
-        <Layout.Content style={{ margin: '24px 16px 0' }}>
+        <Content style={{ margin: '24px 16px 0' }}>
         <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
           <Row
             className="login-form"
@@ -161,13 +162,13 @@ class Login extends PureComponent {
             </Col>
           </Row>
         </div>
-        </Layout.Content>
+        </Content>
       </Layout>
     );
   }
 
   handlesOnBackToHome = (
-    event: SyntheticEvent<>
+    event: SyntheticEvent<*>
   ) => {
     if (event) {
       event.preventDefault();
@@ -178,7 +179,7 @@ class Login extends PureComponent {
   }
 
   handlesOnLogin = async (
-    event: SyntheticEvent<>
+    event: SyntheticEvent<*>
   ): Promise<any> => {
     if (event) {
       event.preventDefault();

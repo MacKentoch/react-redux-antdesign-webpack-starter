@@ -3,7 +3,6 @@
 exports[`Login component renders as expected 1`] = `
 <div>
   <div
-    className="ant-layout"
     style={
       Object {
         "height": "100vh",
@@ -11,7 +10,6 @@ exports[`Login component renders as expected 1`] = `
     }
   >
     <div
-      className="ant-layout-content"
       style={
         Object {
           "margin": "24px 16px 0",
