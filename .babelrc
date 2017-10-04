@@ -19,9 +19,16 @@
   ],
   "env": {
     "production": {
-      "presets": [
-        "react-optimize"
+      "plugins": [
+        "transform-react-constant-elements",
+        // "transform-react-inline-elements",
+        "transform-react-pure-class-to-function",
+        "transform-react-remove-prop-types"
       ],
+      // NOTE: removed "react-optimize" and replaced but its plugins except "transform-react-inline-elements"
+      // "presets": [
+      //   "react-optimize"
+      // ],
       "comments": false
     }
   }

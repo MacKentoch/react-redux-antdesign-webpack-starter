@@ -92,10 +92,6 @@ without hot reload:
 npm run serve-prod
 ```
 
-## To fix
-
-- [x] production bundle (fixed: see [#5060](https://github.com/ant-design/ant-design/issues/5060))
-
 ## License
 
 The MIT License (MIT)
