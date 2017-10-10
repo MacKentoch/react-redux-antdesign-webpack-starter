@@ -9,6 +9,10 @@ React + React-Router 4 + Redux + Ant Design + Webpack 3 with Hot Reload and redu
 
 ![preview](./preview/preview.png)
 
+<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/Mp96tCWH2KdajZuBzqB6jwj8/MacKentoch/react-redux-antdesign-webpack-starter'>
+  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/Mp96tCWH2KdajZuBzqB6jwj8/MacKentoch/react-redux-antdesign-webpack-starter.svg' />
+</a>
+
 ## Detailed Content
 
 **Front:**
