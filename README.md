@@ -2,16 +2,16 @@ React + React-Router 4 + Redux + Ant Design + Webpack 3 with Hot Reload and redu
 ==========
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/MacKentoch/react-redux-antdesign-webpack-starter) [![Build Status](https://travis-ci.org/MacKentoch/react-redux-antdesign-webpack-starter.svg?branch=master)](https://travis-ci.org/MacKentoch/react-redux-antdesign-webpack-starter)[![codecov](https://codecov.io/gh/MacKentoch/react-redux-antdesign-webpack-starter/branch/master/graph/badge.svg)](https://codecov.io/gh/MacKentoch/react-redux-antdesign-webpack-starter)
 
+<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/Mp96tCWH2KdajZuBzqB6jwj8/MacKentoch/react-redux-antdesign-webpack-starter'>
+  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/Mp96tCWH2KdajZuBzqB6jwj8/MacKentoch/react-redux-antdesign-webpack-starter.svg' />
+</a>
+
 
 # A full Ant Design starter
 
 > You loved `Bootstrap`? Wait and see [`Ant Design`](https://ant.design/). Do you understand now what I mean?
 
 ![preview](./preview/preview.png)
-
-<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/Mp96tCWH2KdajZuBzqB6jwj8/MacKentoch/react-redux-antdesign-webpack-starter'>
-  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/Mp96tCWH2KdajZuBzqB6jwj8/MacKentoch/react-redux-antdesign-webpack-starter.svg' />
-</a>
 
 ## Detailed Content
 
