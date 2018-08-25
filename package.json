@@ -1,6 +1,6 @@
 {
   "name": "react-redux-antdesign-webpack-starter",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "react js + redux + ant design + react router + hot reload + devTools extension + webpack starter",
   "main": "src/index.js",
   "scripts": {
@@ -16,10 +16,10 @@
     "serve-prod": "npm run prod && cross-env NODE_ENV=production node ./src/server/index.js"
   },
   "engines": {
-    "node": ">=8.1.4",
-    "npm": ">=5.3.0",
-    "npx": ">=9.2.0",
-    "yarn": ">=0.27.5"
+    "node": ">=8.11.4",
+    "npm": ">=6.4.0",
+    "npx": ">=6.4.0",
+    "yarn": ">=1.9.4"
   },
   "keywords": [
     "react",
@@ -37,7 +37,7 @@
     "hot-reload",
     "redux-devtools-extension",
     "devtools",
-    "webpack3"
+    "webpack4"
   ],
   "repository": {
     "type": "git",

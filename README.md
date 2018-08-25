@@ -1,11 +1,6 @@
-React + React-Router 4 + Redux + Ant Design + Webpack 3 with Hot Reload and redux-devtools-extension STARTER
-==========
+# React + React-Router 4 + Redux + Ant Design + Webpack 4 with Hot Reload and redux-devtools-extension STARTER
+
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/MacKentoch/react-redux-antdesign-webpack-starter) [![Build Status](https://travis-ci.org/MacKentoch/react-redux-antdesign-webpack-starter.svg?branch=master)](https://travis-ci.org/MacKentoch/react-redux-antdesign-webpack-starter)[![codecov](https://codecov.io/gh/MacKentoch/react-redux-antdesign-webpack-starter/branch/master/graph/badge.svg)](https://codecov.io/gh/MacKentoch/react-redux-antdesign-webpack-starter)
-
-<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/Mp96tCWH2KdajZuBzqB6jwj8/MacKentoch/react-redux-antdesign-webpack-starter'>
-  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/Mp96tCWH2KdajZuBzqB6jwj8/MacKentoch/react-redux-antdesign-webpack-starter.svg' />
-</a>
-
 
 # A full Ant Design starter
 
@@ -16,24 +11,26 @@ React + React-Router 4 + Redux + Ant Design + Webpack 3 with Hot Reload and redu
 ## Detailed Content
 
 **Front:**
-- React JS (15.6.x+ - [github :link:](https://github.com/facebook/react))
+
+- React JS (16.4.x+ - [github :link:](https://github.com/facebook/react))
 - ant design (2.12 [github :link:](https://github.com/ant-design/ant-design/))
- - with built-in *theme customization* (change vars in [antd-theme-overrides.less](https://github.com/MacKentoch/react-redux-antdesign-webpack-starter/tree/master/src/app/style/antd-theme-overrides.less) to customize)
- - icon font are locally loaded
-- Redux (*as you application grows managing state will be a serious concern, save pain with Redux*)
-- React-Redux (*Redux is not specific to ReactJS, you could easily use it with Angular2 for instance*)
+- with built-in _theme customization_ (change vars in [antd-theme-overrides.less](https://github.com/MacKentoch/react-redux-antdesign-webpack-starter/tree/master/src/app/style/antd-theme-overrides.less) to customize)
+- icon font are locally loaded
+- Redux (_as you application grows managing state will be a serious concern, save pain with Redux_)
+- React-Redux (_Redux is not specific to ReactJS, you could easily use it with Angular2 for instance_)
 - redux-devtools-extension ([github :link:](https://github.com/zalmoxisus/redux-devtools-extension#redux-devtools-extension))
-- React-Router-Redux (*previously named react-simple-router*)
+- React-Router-Redux (_previously named react-simple-router_)
 - react-router (4.x- [github :link:](https://github.com/reactjs/react-router))
 - animate.css ([github :link:](https://github.com/daneden/animate.css))
 - classnames ([github :link:](https://github.com/JedWatson/classnames))
 - react-motion ([github :link:](https://github.com/chenglou/react-motion))
 - Webpack 3.x ([github :link:](https://github.com/webpack/webpack))
 - babel 6+ ([github :link:](https://github.com/babel/babel))
-- axios ([github :link:](https://github.com/mzabriskie/axios) *Why: simple, complete, isomorphic ...*)
+- axios ([github :link:](https://github.com/mzabriskie/axios) _Why: simple, complete, isomorphic ..._)
 - flow
 
 **Tool chain:**
+
 - babel 6+
 - eslint
 - webpack 3
@@ -49,8 +46,8 @@ React + React-Router 4 + Redux + Ant Design + Webpack 3 with Hot Reload and redu
   - svg and fonts formats
 
 **tests:**
-- Jest
 
+- Jest
 
 ## Usage
 
@@ -59,13 +56,14 @@ React + React-Router 4 + Redux + Ant Design + Webpack 3 with Hot Reload and redu
 ```bash
 npm install
 ```
-### bundle dev mode (*+ redux-devtools-extension*)
+
+### bundle dev mode (_+ redux-devtools-extension_)
 
 ```bash
 npm run dev
 ```
 
-### dev : hot reload mode (*+ redux-devtools-extension*)
+### dev : hot reload mode (_+ redux-devtools-extension_)
 
 ```bash
 npm run start
@@ -79,7 +77,6 @@ npm run test
 
 ### bundle production mode
 
-
 ```bash
 npm run prod
 ```
@@ -87,11 +84,13 @@ npm run prod
 ### mini node-express server (for dev or prod bundles)
 
 with server hot reload:
+
 ```bash
 npm run serve-dev
 ```
 
 without hot reload:
+
 ```bash
 npm run serve-prod
 ```
