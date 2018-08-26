@@ -3,8 +3,7 @@
     "include": [
       "react",
       "redux",
-      "react-router",
-      "moment"
+      "react-router"
     ]
   }
 }

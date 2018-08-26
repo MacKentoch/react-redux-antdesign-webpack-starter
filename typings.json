@@ -2,9 +2,12 @@
   "name": "react-redux-bootstrap-webpack-starter",
   "dependencies": {},
   "globalDependencies": {
+    "modernizr": "registry:dt/modernizr#3.3.0+20170302103631",
     "node": "registry:dt/node#7.0.0+20170322231424",
+    "popper.js": "registry:dt/popper.js#0.4.0+20161005184000",
     "react-router": "registry:dt/react-router#4.0.0+20170323201651",
     "react-router-dom": "registry:dt/react-router-dom#4.0.0+20170323201651",
+    "recompose": "registry:dt/recompose#0.22.0+20170306203754",
     "redux": "registry:dt/redux#3.5.2+20160703092728",
     "redux-thunk": "registry:dt/redux-thunk#2.1.0+20160703120921"
   },
