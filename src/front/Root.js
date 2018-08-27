@@ -1,27 +1,30 @@
 // @flow
-
 /* eslint-disable no-process-env */
-import React, { Component } from "react";
-// import PropTypes                from 'prop-types';
+
+// #region imports
+import React, { Component } from 'react';
 import {
   // BrowserRouter as Router,
   HashRouter as Router,
   Switch,
-  Route
-} from "react-router-dom";
-import { Provider } from "react-redux";
-import { syncHistoryWithStore } from "react-router-redux";
-import configureStore from "./redux/store/configureStore";
-import { createBrowserHistory } from "history";
-import App from "./containers/app";
-import ScrollTop from "./components/scrollToTop/ScrollToTop";
-import Login from "./views/login";
-import PageNotFound from "./views/pageNotFound/PageNotFound"; // not connected to redux (no index.js)
-import LogoutRoute from "./components/logoutRoute/LogoutRoute";
+  Route,
+} from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { syncHistoryWithStore } from 'react-router-redux';
+import configureStore from './redux/store/configureStore';
+import { createBrowserHistory } from 'history';
+import App from './containers/app';
+import ScrollTop from './components/scrollToTop/ScrollToTop';
+import Login from './views/login';
+import PageNotFound from './views/pageNotFound'; // not connected to redux (no index.js)
+import LogoutRoute from './components/logoutRoute/LogoutRoute';
+// #endregion
 
+// #region constants
 const history = createBrowserHistory();
 const store = configureStore();
 const syncedHistory = syncHistoryWithStore(history, store);
+// #endregion
 
 class Root extends Component {
   render() {
