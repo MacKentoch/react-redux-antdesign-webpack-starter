@@ -1,19 +1,19 @@
 // @flow
 
 // #region imports
-import "babel-polyfill"; // NOTE: REALLY important to avoid "regeneratorRuntime is not defined"
-import React from "react";
-import { hydrate, render } from "react-dom";
-import injectTpEventPlugin from "react-tap-event-plugin";
-import { AppContainer } from "react-hot-loader";
-import smoothScrollPolyfill from "smoothscroll-polyfill";
-import { loadComponents, getState } from "loadable-components";
-import injectGlobalStyle from "./style/injectGlobalStyles";
-import Root from "./Root";
+import 'babel-polyfill'; // NOTE: REALLY important to avoid "regeneratorRuntime is not defined"
+import React from 'react';
+import { hydrate, render } from 'react-dom';
+import injectTpEventPlugin from 'react-tap-event-plugin';
+import { AppContainer } from 'react-hot-loader';
+import smoothScrollPolyfill from 'smoothscroll-polyfill';
+import { loadComponents, getState } from 'loadable-components';
+import injectGlobalStyle from './style/injectGlobalStyles';
+import Root from './Root';
 // #endregion
 
 // #region constants
-const ELEMENT_TO_BOOTSTRAP = "root";
+const ELEMENT_TO_BOOTSTRAP = 'root';
 const bootstrapedElement = document.getElementById(ELEMENT_TO_BOOTSTRAP);
 // #endregion
 
@@ -50,8 +50,8 @@ const renderApp = RootComponent => {
 renderApp(Root);
 
 if (module.hot) {
-  module.hot.accept("./Root", () => {
-    const RootComponent = require("./Root").default;
+  module.hot.accept('./Root', () => {
+    const RootComponent = require('./Root').default;
     renderApp(RootComponent);
   });
 }

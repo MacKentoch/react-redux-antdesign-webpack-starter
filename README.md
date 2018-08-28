@@ -2,18 +2,21 @@
 
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/MacKentoch/react-redux-antdesign-webpack-starter) [![Build Status](https://travis-ci.org/MacKentoch/react-redux-antdesign-webpack-starter.svg?branch=master)](https://travis-ci.org/MacKentoch/react-redux-antdesign-webpack-starter)[![codecov](https://codecov.io/gh/MacKentoch/react-redux-antdesign-webpack-starter/branch/master/graph/badge.svg)](https://codecov.io/gh/MacKentoch/react-redux-antdesign-webpack-starter)
 
+# ⚠️ Starter currently upgrading (ant design, react 16.4+, styled-components, toolchain, jest tests, flow types...) so better wait few days (*when all done*) before cloning it
+
 # A full Ant Design starter
 
 > You loved `Bootstrap`? Wait and see [`Ant Design`](https://ant.design/). Do you understand now what I mean?
 
 ![preview](./preview/preview.png)
 
+
 ## Detailed Content
 
 **Front:**
 
 - React JS (16.4.x+ - [github :link:](https://github.com/facebook/react))
-- ant design (2.12 [github :link:](https://github.com/ant-design/ant-design/))
+- ant design (3.8+ [github :link:](https://github.com/ant-design/ant-design/))
 - with built-in _theme customization_ (change vars in [antd-theme-overrides.less](https://github.com/MacKentoch/react-redux-antdesign-webpack-starter/tree/master/src/app/style/antd-theme-overrides.less) to customize)
 - icon font are locally loaded
 - Redux (_as you application grows managing state will be a serious concern, save pain with Redux_)
@@ -24,7 +27,7 @@
 - animate.css ([github :link:](https://github.com/daneden/animate.css))
 - classnames ([github :link:](https://github.com/JedWatson/classnames))
 - react-motion ([github :link:](https://github.com/chenglou/react-motion))
-- Webpack 3.x ([github :link:](https://github.com/webpack/webpack))
+- Webpack 4.x ([github :link:](https://github.com/webpack/webpack))
 - babel 6+ ([github :link:](https://github.com/babel/babel))
 - axios ([github :link:](https://github.com/mzabriskie/axios) _Why: simple, complete, isomorphic ..._)
 - flow
@@ -99,7 +102,7 @@ npm run serve-prod
 
 The MIT License (MIT)
 
-Copyright (c) 2017 Erwan DATIN
+Copyright (c) 2018 Erwan DATIN
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 

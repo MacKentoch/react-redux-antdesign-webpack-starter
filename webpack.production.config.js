@@ -1,149 +1,142 @@
-const webpack           = require('webpack');
-const path              = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const fs                = require('fs');
-const lessToJs          = require('less-vars-to-js');
+// @flow
 
-const assetsDir       = path.join(__dirname, 'docs/public/assets');
-const nodeModulesDir  = path.join(__dirname, 'node_modules');
-const vendorsDir      = path.join(__dirname, 'src/app/vendors');
-const indexFile       = path.join(__dirname, 'src/app/index.js');
-const themeVars       = path.join(__dirname, 'src/app/style/antd-theme-overrides.less');
+// #region imports
+const webpack = require('webpack');
+const path = require('path');
+const CompressionWebpackPlugin = require('compression-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const workboxPlugin = require('workbox-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ModernizrWebpackPlugin = require('modernizr-webpack-plugin');
+const fs = require('fs');
+const lessToJs = require('less-vars-to-js');
+// #endregion
 
+// #region constants
+const outputPath = path.join(__dirname, 'docs/assets');
+const publicPath = '/assets/';
+const nodeModulesDir = path.join(__dirname, 'node_modules');
+const indexFile = path.join(__dirname, 'src/front/index.js');
+const themeVars = path.join(
+  __dirname,
+  'src/front/style/antd-theme-overrides.less',
+);
+// specific antd:
 const themeVariables = lessToJs(fs.readFileSync(themeVars, 'utf8'));
-
 /* eslint-disable quotes */
 // lessToJs does not support @icon-url: "some-string", so we are manually adding it to the produced themeVariables js object here
 // themeVariables['@icon-url'] = "'//localhost:3000/src/style/fonts/antd-fonts/iconfont'";
 /* eslint-enable quotes */
-
-const SPLIT_STYLE = true;
+// #endregion
 
 const config = {
-  // devtool: '#source-map',
-  entry: {
-    app: [
-      'babel-polyfill',
-      indexFile
-    ],
-    vendor: [
-      'react',
-      'react-dom',
-      'prop-types',
-      'react-tap-event-plugin',
-      'react-hot-loader',
-      // 'antd',
-      'babel-polyfill',
-      'redux',
-      'react-router-redux',
-      'redux-logger',
-      'redux-thunk',
-      'react-router',
-      'react-router-dom',
-      'history',
-      'classnames',
-      'axios',
-      'js-base64',
-      'moment',
-      'react-motion',
-      'jwt-decode'
-    ]
+  mode: 'production',
+  entry: { app: indexFile },
+  resolve: {
+    modules: ['src/front', 'node_modules'],
+    extensions: ['.js', 'jsx'],
   },
   output: {
-    path:     assetsDir,
-    filename: 'app.bundle.js'
+    path: outputPath,
+    publicPath,
+    filename: '[name].[hash].js',
+    chunkFilename: '[name].[hash].js',
   },
   module: {
     rules: [
       {
-        test:     /\.jsx?$/,
-        exclude:  [nodeModulesDir, vendorsDir],
-        loader:   'babel-loader'
+        test: /\.jsx?$/,
+        exclude: [nodeModulesDir],
+        loader: 'babel-loader',
       },
       {
         test: /\.css$/,
-        use:  SPLIT_STYLE 
-          ? ExtractTextPlugin.extract({
-            fallback: 'style-loader',
-            use: [
-              {loader: 'css-loader', options: { importLoaders: 1 }},
-              'postcss-loader'
-            ]
-          })
-          : [
-            'style-loader',
-            {loader: 'css-loader', options: { importLoaders: 1 }},
-            'postcss-loader'
-          ]
-      },
-      {
-        test: /\.less$/,
-        use:  SPLIT_STYLE 
-        ? ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            {loader: 'css-loader', options: { importLoaders: 1 }},
-            'postcss-loader',
-            { loader: 'less-loader', options: { modifyVars: themeVariables }}
-          ]
-        })
-        : [
-          'style-loader',
-          {loader: 'css-loader', options: { importLoaders: 1 }},
-          'postcss-loader',
-          { loader: 'less-loader', options: { modifyVars: themeVariables }}
-        ]
-      },
-      {
-        test: /\.scss$/,
-        use:  SPLIT_STYLE 
-        ? ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            {loader: 'css-loader', options: { importLoaders: 1 }},
-            'postcss-loader',
-            'sass-loader'
-          ]
-        })
-        : [
-          'style-loader',
-          {loader: 'css-loader', options: { importLoaders: 1 }},
-          'postcss-loader',
-          'sass-loader'
-        ]
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.(eot|woff|woff2|ttf|svg|png|jpe?g|gif)(\?\S*)?$/,
         use: [
           {
-            loader:  'url-loader',
+            loader: 'url-loader',
             options: {
               limit: 100000,
-              name: '[name].[ext]'
-            }
-          }
-        ]
-      }
-    ]
+              name: '[name].[ext]',
+            },
+          },
+        ],
+      },
+      {
+        test: /\.less$/,
+        use: [
+          'style-loader',
+          { loader: 'css-loader', options: { importLoaders: 1 } },
+          {
+            loader: 'less-loader',
+            options: { javascriptEnabled: true, modifyVars: themeVariables },
+          },
+        ],
+      },
+    ],
+  },
+  optimization: {
+    runtimeChunk: false,
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all',
+        },
+        styles: {
+          name: 'styles',
+          test: /\.css$/,
+          chunks: 'all',
+          enforce: true,
+        },
+      },
+    },
+    minimizer: [
+      new MiniCssExtractPlugin({
+        filename: '[name].[hash].css',
+        chunkFilename: '[id].[hash].css',
+      }),
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: true,
+      }),
+      new OptimizeCSSAssetsPlugin({}),
+    ],
   },
   plugins: [
-    setNodeEnv(),
-    new ExtractTextPlugin('app.styles.css'),
-    new webpack.optimize.CommonsChunkPlugin({
-      name:     'vendor',
-      filename: 'app.vendor.bundle.js' 
-    })
-  ]
+    new HtmlWebpackPlugin({
+      filename: '../index.html',
+      template: 'src/front/statics/index.html',
+    }),
+    new ModernizrWebpackPlugin({
+      htmlWebpackPlugin: true,
+    }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('production'),
+      },
+    }),
+    new CompressionWebpackPlugin({
+      asset: '[path].gz[query]',
+      algorithm: 'gzip',
+      test: new RegExp('\\.(js|css)$'),
+      threshold: 10240,
+      minRatio: 0.8,
+    }),
+    // IPORTANT: we need to serve app through https otherwise SW will throw error (so no SW in this simple case)
+    new workboxPlugin.GenerateSW({
+      swDest: 'sw.js',
+      clientsClaim: true,
+      skipWaiting: true,
+    }),
+  ],
 };
-/*
-* here using hoisting so don't use `var NAME = function()...`
-*/
-function setNodeEnv() {
-  return new webpack.DefinePlugin({
-    'process.env': {
-      'NODE_ENV': JSON.stringify('production')
-    }
-  });
-}
 
 module.exports = config;

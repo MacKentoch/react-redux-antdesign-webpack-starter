@@ -13,7 +13,7 @@ import { Provider } from 'react-redux';
 import { syncHistoryWithStore } from 'react-router-redux';
 import configureStore from './redux/store/configureStore';
 import { createBrowserHistory } from 'history';
-import App from './containers/app';
+import App from './layout/mainLayout';
 import ScrollTop from './components/scrollToTop/ScrollToTop';
 import Login from './views/login';
 import PageNotFound from './views/pageNotFound'; // not connected to redux (no index.js)

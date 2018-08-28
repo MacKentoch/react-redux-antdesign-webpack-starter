@@ -1,41 +1,49 @@
-// @flow weak
+// @flow
+/* eslint-disable react/no-unescaped-entities */
 
+// #region imports
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { Layout, Menu, Icon } from 'antd';
 import navigationModel from '../../config/navigation.json';
 import MainRoutes from '../../routes/MainRoutes';
+import { type RouterProps } from '../../types/react-router';
+import StyledLayout from './styled/StyledLayout';
+import SideMenuLogo from './styled/SideMenuLogo';
+// #endregion
 
+// #region flow types
+export type Props = { ...any } & RouterProps;
+
+export type State = {
+  navModel: navigationModel,
+  selectedSidemenu: ['/'],
+  ...any,
+};
+// #endregion
+
+// #region constants
 const { Header, Content, Footer, Sider } = Layout;
 const MenuItem = Menu.Item; // workaround to fix production bundle error: "Menu not found"
+// #endregion
 
-class App extends Component {
-  static propTypes = {
-    // react-router 4:
-    match: PropTypes.object.isRequired,
-    location: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired,
-
-    // views:
-    currentView: PropTypes.string,
-  };
-
+class MainLayout extends Component<Props, State> {
   state = {
     navModel: navigationModel,
     selectedSidemenu: ['/'],
   };
 
+  // #region lifecycle
   render() {
     const { navModel, selectedSidemenu } = this.state;
 
     return (
-      <Layout className="layout">
+      <StyledLayout>
         <Sider
           breakpoint="lg"
           collapsedWidth="0"
           onCollapse={this.handlesOnCollpase}
         >
-          <div className="side-menu-logo" />
+          <SideMenuLogo />
           <Menu
             theme="dark"
             mode="inline"
@@ -62,16 +70,20 @@ class App extends Component {
             <span style={{ color: '#CF000F' }}>❤️</span> by Erwan Datin
           </Footer>
         </Layout>
-      </Layout>
+      </StyledLayout>
     );
   }
+  // #endregion
 
+  // #region side menu collapse event
   handlesOnCollpase = (collapsed: boolean, type: string): void => {
     /* eslint-disable no-console */
     console.log(collapsed, type);
     /* eslint-enable no-console */
   };
+  // #endregion
 
+  // #region side menu item click event
   handlesOnMenuClick = (event: SyntheticEvent<>): void => {
     if (event) {
       const { history } = this.props;
@@ -80,6 +92,7 @@ class App extends Component {
       history.push(key);
     }
   };
+  // #endregion
 }
 
-export default App;
+export default MainLayout;

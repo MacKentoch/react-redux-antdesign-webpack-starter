@@ -12,6 +12,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ModernizrWebpackPlugin = require('modernizr-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin;
+const fs = require('fs');
+const lessToJs = require('less-vars-to-js');
 // #endregion
 
 // #region constants
@@ -19,6 +21,16 @@ const outputPath = path.join(__dirname, 'docs/public/assets');
 const publicPath = 'public/assets/';
 const nodeModulesDir = path.join(__dirname, 'node_modules');
 const indexFile = path.join(__dirname, 'src/front/index.js');
+const themeVars = path.join(
+  __dirname,
+  'src/front/style/antd-theme-overrides.less',
+);
+// specific antd:
+const themeVariables = lessToJs(fs.readFileSync(themeVars, 'utf8'));
+/* eslint-disable quotes */
+// lessToJs does not support @icon-url: "some-string", so we are manually adding it to the produced themeVariables js object here
+// themeVariables['@icon-url'] = "'//localhost:3000/src/style/fonts/antd-fonts/iconfont'";
+/* eslint-enable quotes */
 // #endregion
 
 const config = {
@@ -54,6 +66,17 @@ const config = {
               limit: 100000,
               name: '[name].[ext]',
             },
+          },
+        ],
+      },
+      {
+        test: /\.less$/,
+        use: [
+          'style-loader',
+          { loader: 'css-loader', options: { importLoaders: 1 } },
+          {
+            loader: 'less-loader',
+            options: { javascriptEnabled: true, modifyVars: themeVariables },
           },
         ],
       },

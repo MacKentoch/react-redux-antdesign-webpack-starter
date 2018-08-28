@@ -2,11 +2,17 @@
 
 // #region imports
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import { Row, Col, Button, Form, Input, Icon, Layout } from 'antd';
 import LoginForm from './styled/LoginForm';
 import LoginIcon from './styled/LoginIcon';
 import auth from '../../services/auth';
+import { type RouterProps } from '../../types/react-router';
+// #endregion
+
+// #region flow types
+export type Props = { ...any } & RouterProps;
+
+export type State = { ...any };
 // #endregion
 
 // #region constants
@@ -14,32 +20,22 @@ const FormItem = Form.Item;
 const { Content } = Layout;
 // #endregion
 
-class Login extends PureComponent {
-  static propTypes = {
-    // react-router 4:
-    match: PropTypes.object.isRequired,
-    location: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired,
+class Login extends PureComponent<Props, State> {
+  // static propTypes = {
+  //   // antd Form.create
+  //   form: PropTypes.shape({
+  //     getFieldDecorator: PropTypes.func.isRequired,
+  //     validateFields: PropTypes.func.isRequired,
+  //     getFieldValue: PropTypes.func.isRequired,
+  //   }).isRequired,
 
-    // antd Form.create
-    form: PropTypes.shape({
-      getFieldDecorator: PropTypes.func.isRequired,
-      validateFields: PropTypes.func.isRequired,
-      getFieldValue: PropTypes.func.isRequired,
-    }).isRequired,
-
-    // views props:
-    currentView: PropTypes.string.isRequired,
-    enterLogin: PropTypes.func.isRequired,
-    leaveLogin: PropTypes.func.isRequired,
-
-    // userAuth:
-    isAuthenticated: PropTypes.bool,
-    isFetching: PropTypes.bool,
-    isLogging: PropTypes.bool,
-    disconnectUser: PropTypes.func.isRequired,
-    logUserIfNeeded: PropTypes.func.isRequired,
-  };
+  //   // userAuth:
+  //   isAuthenticated: PropTypes.bool,
+  //   isFetching: PropTypes.bool,
+  //   isLogging: PropTypes.bool,
+  //   disconnectUser: PropTypes.func.isRequired,
+  //   logUserIfNeeded: PropTypes.func.isRequired,
+  // };
 
   static defaultProps = {
     isFetching: false,
