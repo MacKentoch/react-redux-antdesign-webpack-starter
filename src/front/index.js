@@ -18,10 +18,11 @@ const bootstrapedElement = document.getElementById(ELEMENT_TO_BOOTSTRAP);
 // #endregion
 
 // #region globals (styles, polyfill ...)
-// smoothscroll polyfill
+// #region smoothscroll polyfill
 smoothScrollPolyfill.polyfill();
 // force polyfill (even if browser partially implements it)
 window.__forceSmoothScrollPolyfill__ = true;
+// #endregion
 window.snapSaveState = () => getState();
 
 injectGlobalStyle();

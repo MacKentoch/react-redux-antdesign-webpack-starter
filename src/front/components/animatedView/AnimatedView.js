@@ -1,38 +1,41 @@
-// @flow weak
+// @flow
 
+// #region imports
 import React, { Component } from 'react';
-import PropTypes            from 'prop-types';
-import cx                   from 'classnames';
-// import { withRouter }       from 'react-router-dom';
+import cx from 'classnames';
+// #endregion
 
-class AnimatedView extends Component {
-  static propTypes = {
-    children: PropTypes.node,
-    animated: PropTypes.bool
-  };
+// #region flow types
+export type Props = {
+  children: React.ReactNode,
+  animated: boolean,
+  ...any,
+};
 
+export type State = { ...any };
+// #endregion
+
+class AnimatedView extends Component<Props, State> {
   static defaultProps = {
-    animated: true
+    animated: true,
   };
 
+  // #region lifecycle
   render() {
-    const {
-      animated,
-      children
-    } = this.props;
+    const { animated, children } = this.props;
 
     return (
       <section
-        className={
-          cx({
-            'content':    true,
-            'view-enter': animated
-          })
-        }>
-        { children }
+        className={cx({
+          content: true,
+          'view-enter': animated,
+        })}
+      >
+        {children}
       </section>
     );
   }
+  // #endregion
 }
 
 export default AnimatedView;
