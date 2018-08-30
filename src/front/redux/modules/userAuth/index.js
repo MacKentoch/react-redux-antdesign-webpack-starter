@@ -1,16 +1,16 @@
 // @flow
 
-import moment from 'moment';
-import { appConfig } from '../../config';
-import userInfosMockData from '../../mock/userInfosMock.json';
-import getLocationOrigin from '../../services/utils/getLocationOrigin';
-import auth from '../../services/auth';
+// #region imports
+import { format } from 'date-fns';
+import appConfig from '../../../config/appConfig';
+import userInfosMockData from '../../../mock/userInfosMock.json';
+import { getLocationOrigin } from '../../../services/API/fetchTools';
+import auth from '../../../services/auth';
+import { type State } from '../../../types/redux/userAuth';
+import { type Dispatch, type GetState } from '../../../types/redux/redux-thunk';
+// #endregion
 
-const dateFormat = 'DD/MM/YYYY HH:mm';
-
-// --------------------------------
-// CONSTANTS
-// --------------------------------
+// #region CONSTANTS
 const REQUEST_USER_INFOS_DATA: string = 'REQUEST_USER_INFOS_DATA';
 const RECEIVED_USER_INFOS_DATA: string = 'RECEIVED_USER_INFOS_DATA';
 const ERROR_USER_INFOS_DATA: string = 'ERROR_USER_INFOS_DATA';
@@ -22,15 +22,37 @@ const ERROR_LOG_USER: string = 'ERROR_LOG_USER';
 const CHECK_IF_USER_IS_AUTHENTICATED = 'CHECK_IF_USER_IS_AUTHENTICATED';
 
 const DISCONNECT_USER = 'DISCONNECT_USER';
+// #endregion
 
-// --------------------------------
-// REDUCER
-// --------------------------------
-const initialState = {
+// #region flow types
+type ActionType =
+  | 'REQUEST_USER_INFOS_DATA'
+  | 'RECEIVED_USER_INFOS_DATA'
+  | 'ERROR_USER_INFOS_DATA'
+  | 'REQUEST_LOG_USER'
+  | 'RECEIVED_LOG_USER'
+  | 'ERROR_LOG_USER'
+  | 'CHECK_IF_USER_IS_AUTHENTICATED'
+  | 'DISCONNECT_USER';
+
+type Action = {
+  type: ActionType,
+
+  isFetching?: boolean,
+  actionTime?: string,
+  data?: { ...any } | Array<any>,
+  error: { ...any },
+};
+// #endregion
+
+// #region REDUCER
+
+// #region initial State
+const initialState: State = {
   // actions details
   isFetching: false,
   isLogging: false,
-  actionTime: '',
+  time: '',
 
   // userInfos
   id: '',
@@ -41,9 +63,11 @@ const initialState = {
   token: null,
   isAuthenticated: false, // authentication status (token based auth)
 };
+// #endregion
 
-export default function(state = initialState, action) {
-  const currentTime = moment().format(dateFormat);
+// #region reducer
+export default function(state: State = initialState, action: Action): State {
+  const currentTime = format(new Date());
 
   switch (action.type) {
     case CHECK_IF_USER_IS_AUTHENTICATED:
@@ -87,7 +111,7 @@ export default function(state = initialState, action) {
         isLogging: true,
       };
 
-    case RECEIVED_LOG_USER:
+    case RECEIVED_LOG_USER: {
       const userLogged = action.payload.data;
 
       return {
@@ -101,6 +125,7 @@ export default function(state = initialState, action) {
         lastname: userLogged.lastname,
         isLogging: false,
       };
+    }
 
     case ERROR_LOG_USER:
       return {
@@ -118,7 +143,7 @@ export default function(state = initialState, action) {
         isFetching: true,
       };
 
-    case RECEIVED_USER_INFOS_DATA:
+    case RECEIVED_USER_INFOS_DATA: {
       const userInfos = action.payload.data;
 
       return {
@@ -130,6 +155,7 @@ export default function(state = initialState, action) {
         firstname: userInfos.firstname,
         lastname: userInfos.lastname,
       };
+    }
 
     case ERROR_USER_INFOS_DATA:
       return {
@@ -142,34 +168,21 @@ export default function(state = initialState, action) {
       return state;
   }
 }
+// #endregion
 
-// --------------------------------
-// ACTIONS CREATORS
-// --------------------------------
-//
+// #endregion
 
-/**
- *
- * set user isAuthenticated to false and clear all app localstorage:
- *
- * @export
- * @returns {action} action
- */
-export function disconnectUser() {
+// #region ACTIONS CREATORS
+
+// #region disconnect user
+export function disconnectUser(): Action {
   auth.clearAllAppStorage();
   return { type: DISCONNECT_USER };
 }
+// #endregion
 
-/**
- *
- * check if user is connected by looking at locally stored
- * - token
- * - user fonrmation
- *
- * @export
- * @returns {action} action
- */
-export function checkUserIsConnected() {
+// #region check if user is connected
+export function checkUserIsConnected(): Action {
   const token = auth.getToken();
   const user = auth.getUserInfo();
   const checkUserHasId = obj => obj && obj._id;
@@ -182,17 +195,11 @@ export function checkUserIsConnected() {
     isAuthenticated,
   };
 }
+// #endregion
 
-/**
- *
- *  user login
- *
- * @param {string} login user login
- * @param {string} password usepasswordr
- * @returns {Promise<any>} promised action
- */
-function logUser(login: string, password: string) {
-  return async dispatch => {
+// #region loguser
+function logUser(login: string, password: string): Promise<any> {
+  return async (dispatch: Dispatch<State>): Promise<any> => {
     const FETCH_TYPE = appConfig.DEV_MODE ? 'FETCH_MOCK' : 'FETCH';
     const __SOME_LOGIN_API__ = 'login';
 
@@ -230,39 +237,41 @@ function logUser(login: string, password: string) {
     });
   };
 }
+
 export function logUserIfNeeded(
   email: string,
   password: string,
 ): (...any) => Promise<any> {
-  return (dispatch: any => any, getState: () => boolean): any => {
+  return (
+    dispatch: Dispatch<Action>,
+    getState: GetState<{ userAuth: State, ...any }>,
+  ): Promise<any> => {
     if (shouldLogUser(getState())) {
       return dispatch(logUser(email, password));
     }
     return Promise.resolve();
   };
 }
-function shouldLogUser(state: any): boolean {
-  const isLogging = state.userAuth.isLogging;
+function shouldLogUser(state: { userAuth: State, ...any }): boolean {
+  const { isLogging } = state.userAuth;
+
   if (isLogging) {
     return false;
   }
   return true;
 }
 
-/**
- * fetch user info
- *
- * NOTE: this shows a use-case of fetchMiddleware
- *@param {string} [id=''] user id
- * @returns {Promise<any>} returns fetch promise
- */
-function fetchUserInfosData(id = '') {
-  return dispatch => {
+function fetchUserInfosData(id: string = ''): Promise<any> {
+  return (dispatch: Dispatch<State>): Promise<any> => {
     const token = auth.getToken();
-    const FETCH_TYPE = appConfig.DEV_MODE ? 'FETCH_MOCK' : 'FETCH';
+    const {
+      DEV_MODE,
+      api: { users },
+    } = appConfig;
+    const FETCH_TYPE = DEV_MODE ? 'FETCH_MOCK' : 'FETCH';
 
     const mockResult = userInfosMockData; // will be fetch_mock data returned (in case FETCH_TYPE = 'FETCH_MOCK', otherwise cata come from server)
-    const url = `${getLocationOrigin()}/${appConfig.API.users}/${id}`;
+    const url = `${getLocationOrigin()}/${users}/${id}`;
     const method = 'get';
     const headers = { authorization: `Bearer ${token}` };
     const options = { credentials: 'same-origin' }; // put options here (see axios options)
@@ -290,7 +299,10 @@ function fetchUserInfosData(id = '') {
 }
 
 export function fetchUserInfoDataIfNeeded(id: string = '') {
-  return (dispatch, getState) => {
+  return (
+    dispatch: (Dispatch<State>) => any,
+    getState: () => { userAuth: State, ...any },
+  ) => {
     if (shouldFetchUserInfoData(getState())) {
       return dispatch(fetchUserInfosData(id));
     }
@@ -298,20 +310,10 @@ export function fetchUserInfoDataIfNeeded(id: string = '') {
   };
 }
 
-/**
- *
- * determine wether fetching should occur
- *
- * rules:
- * - should not fetch twice when already fetching
- * - ...more rules can be added
- *
- * @param {Immutable.Map} state all redux state (immutable state)
- * @returns {boolean} flag
- */
-function shouldFetchUserInfoData(state): boolean {
-  const userInfos = state.userAuth;
-  if (userInfos.isFetching) {
+function shouldFetchUserInfoData(state: { userAuth: State, ...any }): boolean {
+  const { isFetching } = state.userAuth;
+
+  if (isFetching) {
     return false;
   }
   return true;

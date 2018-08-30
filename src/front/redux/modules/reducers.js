@@ -3,12 +3,10 @@
 // #region immports
 import { routerReducer } from 'react-router-redux';
 import { combineReducers } from 'redux';
-import fakeModuleWithFetch from './fakeModuleWithFetch';
 import userAuth from './userAuth';
 // #endregion
 
 export const reducers = {
-  fakeModuleWithFetch,
   userAuth,
 };
 
