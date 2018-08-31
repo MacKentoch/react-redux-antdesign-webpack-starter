@@ -3,46 +3,42 @@
 
 // #region imports
 import React, { Component } from 'react';
-import {
-  // BrowserRouter as Router,
-  HashRouter as Router,
-  Switch,
-  Route,
-} from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
+import { ConnectedRouter } from 'react-router-redux';
 import { Provider } from 'react-redux';
-import { syncHistoryWithStore } from 'react-router-redux';
+import { history } from './redux/store/configureStore';
 import configureStore from './redux/store/configureStore';
-import { createBrowserHistory } from 'history';
 import App from './layout/mainLayout';
 import ScrollTop from './components/scrollToTop/ScrollToTop';
-import Login from './views/login';
-import PageNotFound from './views/pageNotFound'; // not connected to redux (no index.js)
+import { Login, PageNotFound } from './routes/routes';
 import LogoutRoute from './components/logoutRoute/LogoutRoute';
 // #endregion
 
-// #region constants
-const history = createBrowserHistory();
-const store = configureStore();
-const syncedHistory = syncHistoryWithStore(history, store);
+// #region flow types
+export type Props = {};
+
+export type State = {};
 // #endregion
 
-class Root extends Component {
+// #region constants
+const store = configureStore();
+// #endregion
+
+class Root extends Component<Props, State> {
   render() {
     return (
       <Provider store={store}>
-        <div>
-          <Router history={syncedHistory}>
-            <ScrollTop>
-              <Switch>
-                <Route exact path="/login" component={Login} />
-                <App />
-                {/* logout: just redirects to login (App will take care of removing the token) */}
-                <LogoutRoute path="/logout" />
-                <Route component={PageNotFound} />
-              </Switch>
-            </ScrollTop>
-          </Router>
-        </div>
+        <ConnectedRouter history={history}>
+          <ScrollTop>
+            <Switch>
+              <Route exact path="/login" component={Login} />
+              <App />
+              {/* logout: just redirects to login (App will take care of removing the token) */}
+              <LogoutRoute path="/logout" />
+              <Route component={PageNotFound} />
+            </Switch>
+          </ScrollTop>
+        </ConnectedRouter>
       </Provider>
     );
   }

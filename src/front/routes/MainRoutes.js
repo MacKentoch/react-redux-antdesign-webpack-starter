@@ -3,10 +3,7 @@
 // #region imports
 import React from 'react';
 import { Route, Switch } from 'react-router';
-import Home from '../pages/home';
-import About from '../pages/about';
-import PrivateRoute from '../components/privateRoute/PrivateRoute';
-import Protected from '../pages/protected';
+import { Home, About, Protected, PrivateRoute } from './routes';
 // #endregion
 
 const MainRoutes = () => {
