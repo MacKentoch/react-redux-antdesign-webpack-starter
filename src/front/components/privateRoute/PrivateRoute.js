@@ -9,7 +9,7 @@ import { type RouterProps } from '../../types/react-router';
 
 // #region flow types
 type Props = {
-  component: React.ReactNode,
+  component: any,
   path: string,
   ...any,
 } & RouterProps;

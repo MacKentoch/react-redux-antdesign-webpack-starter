@@ -7,7 +7,7 @@ import cx from 'classnames';
 
 // #region flow types
 export type Props = {
-  children: React.ReactNode,
+  children: any,
   animated: boolean,
   ...any,
 };

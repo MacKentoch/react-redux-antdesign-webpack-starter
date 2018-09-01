@@ -8,7 +8,7 @@ import { type RouterProps } from '../../types/react-router';
 
 // #region flow types
 type Props = {
-  children: React.ReactNode,
+  children: any,
   ...any,
 } & RouterProps;
 
