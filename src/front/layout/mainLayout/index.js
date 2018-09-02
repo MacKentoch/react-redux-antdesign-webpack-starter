@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import compose from 'recompose/compose';
 import { withRouter } from 'react-router';
-import mainLayout from './mainLayout';
+import MainLayout from './MainLayout';
 // #endregion
 
 // #region redux map state and dispatch to props
@@ -23,5 +23,5 @@ export default compose(
     mapStateToProps,
     mapDispatchToProps,
   ),
-  withRouter(),
-)(mainLayout);
+  withRouter,
+)(MainLayout);

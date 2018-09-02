@@ -2,7 +2,7 @@
 
 // #region imports
 import { format } from 'date-fns';
-import appConfig from '../../../config/appConfig';
+import appConfig from '../../../config';
 import userInfosMockData from '../../../mock/userInfosMock.json';
 import { getLocationOrigin } from '../../../services/API/fetchTools';
 import auth from '../../../services/auth';
@@ -41,7 +41,8 @@ type Action = {
   isFetching?: boolean,
   actionTime?: string,
   data?: { ...any } | Array<any>,
-  error: { ...any },
+  error?: { ...any },
+  ...any,
 };
 // #endregion
 
@@ -185,7 +186,8 @@ export function disconnectUser(): Action {
 export function checkUserIsConnected(): Action {
   const token = auth.getToken();
   const user = auth.getUserInfo();
-  const checkUserHasId = obj => obj && obj._id;
+  const checkUserHasId = (obj: { _id?: string | number, ...any }) =>
+    obj && obj._id;
   const isAuthenticated = token && checkUserHasId(user) ? true : false;
 
   return {
@@ -199,7 +201,7 @@ export function checkUserIsConnected(): Action {
 
 // #region loguser
 function logUser(login: string, password: string): Promise<any> {
-  return async (dispatch: Dispatch<State>): Promise<any> => {
+  return (dispatch: Dispatch<State>): Promise<any> => {
     const FETCH_TYPE = appConfig.DEV_MODE ? 'FETCH_MOCK' : 'FETCH';
     const __SOME_LOGIN_API__ = 'login';
 
