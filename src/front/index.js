@@ -14,7 +14,7 @@ import Root from './Root';
 
 // #region constants
 const ELEMENT_TO_BOOTSTRAP = 'root';
-const bootstrapedElement = document.getElementById(ELEMENT_TO_BOOTSTRAP);
+const bootstrapedElement: any = document.getElementById(ELEMENT_TO_BOOTSTRAP);
 // #endregion
 
 // #region globals (styles, polyfill ...)

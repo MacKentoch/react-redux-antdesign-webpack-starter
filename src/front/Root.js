@@ -4,7 +4,7 @@
 // #region imports
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { ConnectedRouter } from 'react-router-redux';
+import { ConnectedRouter } from 'connected-react-router';
 import { Provider } from 'react-redux';
 import { history } from './redux/store/configureStore';
 import configureStore from './redux/store/configureStore';

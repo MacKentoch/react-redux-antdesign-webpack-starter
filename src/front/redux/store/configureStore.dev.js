@@ -36,6 +36,7 @@ export default function configureStore(initialState: any) {
     initialState,
     enhancer,
   );
+
   if (module.hot) {
     module.hot.accept('../modules/reducers', () =>
       store.replaceReducer(require('../modules/reducers').default),

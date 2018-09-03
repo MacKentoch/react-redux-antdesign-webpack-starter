@@ -3,9 +3,8 @@
 [include]
 
 [libs]
-flow-typed/interface/global.js
+./flow-typed
 
 [options]
 module.name_mapper='.*\(.css\)' -> 'CSSModule'
-module.system=haste
 suppress_comment= \\(.\\|\n\\)*\\$FlowIgnore
