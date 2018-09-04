@@ -2,6 +2,7 @@
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import compose from 'recompose/compose';
 import * as userAuthActions from '../../redux/modules/userAuth';
 import Login from './Login';
 
@@ -22,7 +23,9 @@ const mapDispatchToProps = dispatch => {
   );
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
+export default compose(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps,
+  ),
 )(Login);

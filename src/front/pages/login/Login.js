@@ -7,10 +7,19 @@ import LoginForm from './styled/LoginForm';
 import LoginIcon from './styled/LoginIcon';
 import auth from '../../services/auth';
 import { type RouterProps } from '../../types/react-router';
+import { type UserAuthActions } from '../../types/redux/userAuth';
+import { type FormCreateInjectedProps } from '../../types/antd/formHoc';
 // #endregion
 
 // #region flow types
-export type Props = { ...any } & RouterProps;
+export type Props = {
+  isAuthenticated: boolean,
+  isFetching: boolean,
+  isLogging: boolean,
+  ...any,
+} & RouterProps &
+  FormCreateInjectedProps &
+  UserAuthActions;
 
 export type State = { ...any };
 // #endregion
@@ -21,37 +30,15 @@ const { Content } = Layout;
 // #endregion
 
 class Login extends PureComponent<Props, State> {
-  // static propTypes = {
-  //   // antd Form.create
-  //   form: PropTypes.shape({
-  //     getFieldDecorator: PropTypes.func.isRequired,
-  //     validateFields: PropTypes.func.isRequired,
-  //     getFieldValue: PropTypes.func.isRequired,
-  //   }).isRequired,
-
-  //   // userAuth:
-  //   isAuthenticated: PropTypes.bool,
-  //   isFetching: PropTypes.bool,
-  //   isLogging: PropTypes.bool,
-  //   disconnectUser: PropTypes.func.isRequired,
-  //   logUserIfNeeded: PropTypes.func.isRequired,
-  // };
-
   static defaultProps = {
     isFetching: false,
     isLogging: false,
   };
 
+  // #region lifecycle
   componentDidMount() {
-    const { enterLogin, disconnectUser } = this.props;
-
+    const { disconnectUser } = this.props;
     disconnectUser(); // diconnect user: remove token and user info
-    enterLogin();
-  }
-
-  componentWillUnmount() {
-    const { leaveLogin } = this.props;
-    leaveLogin();
   }
 
   render() {
@@ -66,9 +53,9 @@ class Login extends PureComponent<Props, State> {
           <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
             <LoginForm className="login-form">
               <Col md={{ span: 6, offset: 8 }} xs={{ span: 18, offset: 3 }}>
-                <div className="login-icon">
+                <LoginIcon>
                   <Icon type="user" style={{ fontSize: '142px' }} />
-                </div>
+                </LoginIcon>
               </Col>
             </LoginForm>
             <Row className="login-form">
@@ -128,7 +115,9 @@ class Login extends PureComponent<Props, State> {
       </Layout>
     );
   }
+  // #enregion
 
+  // #region back to home button press event
   handlesOnBackToHome = (event: SyntheticEvent<*>) => {
     if (event) {
       event.preventDefault();
@@ -137,7 +126,9 @@ class Login extends PureComponent<Props, State> {
 
     history.push('/');
   };
+  // #endregion
 
+  // #region login button event
   handlesOnLogin = async (event: SyntheticEvent<*>): Promise<any> => {
     if (event) {
       event.preventDefault();
@@ -181,15 +172,7 @@ class Login extends PureComponent<Props, State> {
       /* eslint-enable no-console */
     }
   };
-
-  goHome = (event: any) => {
-    if (event) {
-      event.preventDefault();
-    }
-
-    const { history } = this.props;
-    history.push({ pathname: '/' });
-  };
+  // #endregion
 }
 
 export default Form.create({})(Login);

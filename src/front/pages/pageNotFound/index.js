@@ -3,6 +3,7 @@
 // #region imports
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import compose from 'recompose/compose';
 import PageNotFound from './PageNotFound';
 // #endregion
 
@@ -16,7 +17,9 @@ const mapDispatchToProps = dispatch => {
 };
 // #endregion
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
+export default compose(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps,
+  ),
 )(PageNotFound);

@@ -87,6 +87,7 @@ class MainLayout extends Component<Props, State> {
   handlesOnMenuClick = (event: SyntheticEvent<>): void => {
     if (event) {
       const { history } = this.props;
+      // $FlowIgnore
       const { key } = event;
 
       history.push(key);
