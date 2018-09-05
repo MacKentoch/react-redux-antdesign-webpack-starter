@@ -38,37 +38,40 @@ class MainLayout extends Component<Props, State> {
 
     return (
       <StyledLayout>
-        <Sider
-          breakpoint="lg"
-          collapsedWidth="0"
-          onCollapse={this.handlesOnCollpase}
-        >
-          <SideMenuLogo />
-          <Menu
-            theme="dark"
-            mode="inline"
-            defaultSelectedKeys={selectedSidemenu}
-            onClick={this.handlesOnMenuClick}
-          >
-            {navModel.sideLinks.map(({ label, icon, link }) => (
-              <MenuItem key={link}>
-                <Icon type={icon} />
-                <span className="nav-text">{label}</span>
-              </MenuItem>
-            ))}
-          </Menu>
-        </Sider>
+        <Header style={{ padding: 0 }} />
         <Layout>
-          <Header style={{ background: '#4A4A4A', padding: 0 }} />
-          <Content style={{ margin: '24px 16px 0' }}>
-            <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
-              <MainRoutes />
-            </div>
-          </Content>
-          <Footer style={{ textAlign: 'center' }}>
-            "React+ Redux+ Ant Design + Webpack Starter" made with{' '}
-            <span style={{ color: '#CF000F' }}>❤️</span> by Erwan Datin
-          </Footer>
+          <Sider
+            breakpoint="lg"
+            collapsedWidth="0"
+            onCollapse={this.handlesOnCollpase}
+            theme="light"
+          >
+            <SideMenuLogo />
+            <Menu
+              theme="light"
+              mode="inline"
+              defaultSelectedKeys={selectedSidemenu}
+              onClick={this.handlesOnMenuClick}
+            >
+              {navModel.sideLinks.map(({ label, icon, link }) => (
+                <MenuItem key={link}>
+                  <Icon type={icon} />
+                  <span className="nav-text">{label}</span>
+                </MenuItem>
+              ))}
+            </Menu>
+          </Sider>
+          <Layout>
+            <Content style={{ margin: '24px 16px 0' }}>
+              <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
+                <MainRoutes />
+              </div>
+            </Content>
+            <Footer style={{ textAlign: 'center' }}>
+              "React+ Redux+ Ant Design + Webpack Starter" made with{' '}
+              <span style={{ color: '#CF000F' }}>❤️</span> by Erwan Datin
+            </Footer>
+          </Layout>
         </Layout>
       </StyledLayout>
     );
