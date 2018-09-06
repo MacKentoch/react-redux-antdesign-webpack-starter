@@ -146,7 +146,7 @@
     "optimize-css-assets-webpack-plugin": "^5.0.0",
     "progress-bar-webpack-plugin": "^1.11.0",
     "react-addons-test-utils": "^15.6.2",
-    "react-hot-loader": "^4.3.5",
+    "react-hot-loader": "4.0.0",
     "react-snap": "^1.10.1",
     "react-test-renderer": "^15.6.1",
     "redux-devtools-extension": "^2.13.5",

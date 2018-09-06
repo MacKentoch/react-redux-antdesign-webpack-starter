@@ -18,7 +18,7 @@ class Home extends PureComponent<Props, State> {
     return (
       <AnimatedView>
         <div>
-          <h1>ReactJS + Redux + Ant Design</h1>
+          <h1>ReactJS 16 + Redux + Ant Design</h1>
           <h2>with Hot Reload!!!</h2>
           <h2>and React Router v4</h2>
           <h2>and webpack 4.x</h2>

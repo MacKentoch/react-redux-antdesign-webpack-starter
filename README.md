@@ -4,6 +4,8 @@
 
 # ⚠️ Starter currently upgrading (ant design, react 16.4+, styled-components, toolchain, jest tests, flow types...) so better wait few days (*when all done*) before cloning it
 
+> `Ant Design` still upgrading to ReactJS 16.3 new lifecycle so right now this app is not fully working as expected [until this issue is fixed](https://github.com/ant-design/ant-design/issues/9792)
+
 # A full Ant Design starter
 
 > You loved `Bootstrap`? Wait and see [`Ant Design`](https://ant.design/). Do you understand now what I mean?

@@ -20,6 +20,7 @@ const themeVars = path.join(
   __dirname,
   'src/front/style/antd-theme-overrides.less',
 );
+const srcInclude = path.join(__dirname, 'src/front');
 // specific antd:
 const themeVariables = lessToJs(fs.readFileSync(themeVars, 'utf8'));
 /* eslint-disable quotes */
@@ -48,8 +49,9 @@ const config = {
     rules: [
       {
         test: /\.jsx?$/,
+        include: srcInclude,
         exclude: [nodeModulesDir],
-        loader: 'babel-loader',
+        loaders: ['babel-loader'],
       },
       {
         test: /\.css$/,
