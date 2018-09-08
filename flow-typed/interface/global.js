@@ -14,3 +14,9 @@ declare var module: {
 
 // for jQuery:
 declare var $: any;
+
+// jest
+
+declare module 'jest' {
+  declare module.exports: any;
+}

@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BackToTopButton component renders as expected 1`] = `
+<div>
+  <button
+    className="btn"
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#4A4A4A",
+        "bottom": "40px",
+        "left": "",
+        "opacity": 0.5,
+        "position": "fixed",
+        "right": "-10px",
+        "width": "100px",
+        "zIndex": 10,
+      }
+    }
+  >
+    <p>
+      a child
+    </p>
+  </button>
+</div>
+`;
