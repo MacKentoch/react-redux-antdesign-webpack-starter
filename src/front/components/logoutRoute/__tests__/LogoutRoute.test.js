@@ -9,9 +9,8 @@ import LogoutRoute from '../LogoutRoute';
 
 describe('LogoutRoute component', () => {
   it('renders as expected', () => {
-    const props = {
-      actions: {},
-    };
+    const props = {};
+
     const component = renderer
       .create(
         <div>
