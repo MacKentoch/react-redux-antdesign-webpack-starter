@@ -15,8 +15,8 @@ import SideMenuLogo from './styled/SideMenuLogo';
 export type Props = { ...any } & RouterProps;
 
 export type State = {
-  navModel: navigationModel,
-  selectedSidemenu: ['/'],
+  navModel: any,
+  selectedSidemenu: Array<string>,
   ...any,
 };
 // #endregion

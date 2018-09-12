@@ -1,0 +1,178 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MainLayout component renders as expected 1`] = `
+<div>
+  <div
+    className="sc-bdVaJa fORvkZ ant-layout"
+  >
+    <div
+      className="ant-layout-header"
+      style={
+        Object {
+          "padding": 0,
+        }
+      }
+    />
+    <div
+      className="ant-layout ant-layout-has-sider"
+    >
+      <div
+        className="ant-layout-sider ant-layout-sider-light"
+        style={
+          Object {
+            "flex": "0 0 200px",
+            "maxWidth": "200px",
+            "minWidth": "200px",
+            "width": "200px",
+          }
+        }
+      >
+        <div
+          className="ant-layout-sider-children"
+        >
+          <div
+            className="sc-bwzfXH hfBJpx"
+          />
+          <ul
+            className="ant-menu ant-menu-light ant-menu-root ant-menu-inline"
+            role="menu"
+            style={Object {}}
+          >
+            <li
+              className="ant-menu-item ant-menu-item-selected"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              role="menuitem"
+              style={
+                Object {
+                  "paddingLeft": 24,
+                }
+              }
+            >
+              <i
+                className="anticon anticon-home"
+              />
+              <span
+                className="nav-text"
+              >
+                Home
+              </span>
+            </li>
+            <li
+              className="ant-menu-item"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              role="menuitem"
+              style={
+                Object {
+                  "paddingLeft": 24,
+                }
+              }
+            >
+              <i
+                className="anticon anticon-lock"
+              />
+              <span
+                className="nav-text"
+              >
+                Protected
+              </span>
+            </li>
+            <li
+              className="ant-menu-item"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              role="menuitem"
+              style={
+                Object {
+                  "paddingLeft": 24,
+                }
+              }
+            >
+              <i
+                className="anticon anticon-info-circle-o"
+              />
+              <span
+                className="nav-text"
+              >
+                About
+              </span>
+            </li>
+            <li
+              className="ant-menu-item"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              role="menuitem"
+              style={
+                Object {
+                  "paddingLeft": 24,
+                }
+              }
+            >
+              <i
+                className="anticon anticon-logout"
+              />
+              <span
+                className="nav-text"
+              >
+                Disconnect
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div
+        className="ant-layout"
+      >
+        <div
+          className="ant-layout-content"
+          style={
+            Object {
+              "margin": "24px 16px 0",
+            }
+          }
+        >
+          <div
+            style={
+              Object {
+                "background": "#fff",
+                "minHeight": 360,
+                "padding": 24,
+              }
+            }
+          >
+            <p>
+              home
+            </p>
+          </div>
+        </div>
+        <div
+          className="ant-layout-footer"
+          style={
+            Object {
+              "textAlign": "center",
+            }
+          }
+        >
+          "React+ Redux+ Ant Design + Webpack Starter" made with
+           
+          <span
+            style={
+              Object {
+                "color": "#CF000F",
+              }
+            }
+          >
+            ❤️
+          </span>
+           by Erwan Datin
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
