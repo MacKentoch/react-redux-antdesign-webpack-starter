@@ -106,7 +106,7 @@ Do you use & like react-redux-antdesign-webpack-starter but you don’t find a w
 If yes, please consider donating to support this project. Otherwise, no worries, regardless of whether there is support or not, I will keep maintaining this project. Still, if you buy me a cup of coffee I would be more than happy though 😄
 
 
-[![Support via PayPal](./assets/paypal-button.png)](https://www.paypal.me/ErwanDatin/)
+[![Support via PayPal](./assets/paypal-button@2x.png)](https://www.paypal.me/ErwanDatin/)
 
 ## License
 
