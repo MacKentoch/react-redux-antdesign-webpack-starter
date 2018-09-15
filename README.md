@@ -100,6 +100,10 @@ without hot reload:
 npm run serve-prod
 ```
 
+### Donate
+
+<button style="border: solid 1px #ECECEC; border-radius: 5px" click="window.open('https://www.paypal.me/ErwanDatin/', '_blank')"><img  alt="support via Paypal" src="./assets/paypal-button.png" width="120px"/></button>
+
 ## License
 
 The MIT License (MIT)
