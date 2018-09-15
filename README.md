@@ -102,7 +102,10 @@ npm run serve-prod
 
 ### Donate
 
-<button style="border: solid 1px #ECECEC; border-radius: 5px" click="window.open('https://www.paypal.me/ErwanDatin/', '_blank')"><img  alt="support via Paypal" src="./assets/paypal-button.png" width="120px"/></button>
+Do you use & like react-redux-antdesign-webpack-starter but you don’t find a way to show some love?
+If yes, please consider donating to support this project. Otherwise, no worries, regardless of whether there is support or not, I will keep maintaining this project. Still, if you buy me a cup of coffee I would be more than happy though 😄
+
+<button style="border: solid 1px #F1F2F3; border-radius: 5px" click="window.open('https://www.paypal.me/ErwanDatin/', '_blank')"><img  alt="support via Paypal" src="./assets/paypal-button.png" width="90px"/></button>
 
 ## License
 
