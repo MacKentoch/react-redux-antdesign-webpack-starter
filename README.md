@@ -1,10 +1,9 @@
 # React + React-Router 4 + Redux + Ant Design + Webpack 4 with Hot Reload and redux-devtools-extension STARTER
 
-[![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/MacKentoch/react-redux-antdesign-webpack-starter) [![Build Status](https://travis-ci.org/MacKentoch/react-redux-antdesign-webpack-starter.svg?branch=master)](https://travis-ci.org/MacKentoch/react-redux-antdesign-webpack-starter)[![codecov](https://codecov.io/gh/MacKentoch/react-redux-antdesign-webpack-starter/branch/master/graph/badge.svg)](https://codecov.io/gh/MacKentoch/react-redux-antdesign-webpack-starter)
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000&style=flat-square)](https://github.com/MacKentoch/react-redux-antdesign-webpack-starter) [![Build Status](https://travis-ci.org/MacKentoch/react-redux-antdesign-webpack-starter.svg?branch=master&style=flat-square)](https://travis-ci.org/MacKentoch/react-redux-antdesign-webpack-starter)[![codecov](https://codecov.io/gh/MacKentoch/react-redux-antdesign-webpack-starter/branch/master/graph/badge.svg?style=flat-square)](https://codecov.io/gh/MacKentoch/react-redux-antdesign-webpack-starter)[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
-# ⚠️ Starter currently upgrading (ant design, react 16.4+, styled-components, toolchain, jest tests, flow types...) so better wait few days (*when all done*) before cloning it
 
-> `Ant Design` still upgrading to ReactJS 16.3 new lifecycle so right now this app is not fully working as expected [until this issue is fixed](https://github.com/ant-design/ant-design/issues/9792)
+# ⚠️ `Ant Design` still upgrading to ReactJS 16.3 new lifecycle so right now this app is not fully working as expected [until this issue is fixed](https://github.com/ant-design/ant-design/issues/9792)
 
 # A full Ant Design starter
 
