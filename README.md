@@ -20,7 +20,7 @@
 - ant design (3.8+ [github :link:](https://github.com/ant-design/ant-design/))
 - with built-in _theme customization_ (change vars in [antd-theme-overrides.less](https://github.com/MacKentoch/react-redux-antdesign-webpack-starter/tree/master/src/app/style/antd-theme-overrides.less) to customize)
 - icon font are locally loaded
-- Redux (_as you application grows managing state will be a serious concern, save pain with Redux_)
+- Redux (_as your application grows managing state will be a serious concern, save pain with Redux_)
 - React-Redux (_Redux is not specific to ReactJS, you could easily use it with Angular2 for instance_)
 - redux-devtools-extension ([github :link:](https://github.com/zalmoxisus/redux-devtools-extension#redux-devtools-extension))
 - React-Router-Redux (_previously named react-simple-router_)
