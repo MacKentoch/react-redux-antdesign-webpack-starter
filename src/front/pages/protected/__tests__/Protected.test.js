@@ -10,7 +10,9 @@ import Protected from '../Protected';
 describe('Protected page', () => {
   it('renders as expected', () => {
     const props = {
-      actions: {},
+      match: {},
+      location: {},
+      history: {},
     };
     const component = renderer
       .create(

@@ -14,7 +14,11 @@ jest.mock('antd/lib/icon', () => <i>icon</i>);
 
 describe('Home page', () => {
   it('renders as expected', () => {
-    const props = {};
+    const props = {
+      history: {
+        push: () => {},
+      },
+    };
     const component = renderer
       .create(
         <div>

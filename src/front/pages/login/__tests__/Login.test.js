@@ -13,7 +13,6 @@ jest.mock('antd/lib/button', () => () => <button>mocked button</button>);
 jest.mock('antd/lib/icon', () => <i>icon</i>);
 jest.mock('antd/lib/input', () => <input type="text" />);
 jest.mock('antd/lib/layout', ({ children }) => <div>{children}</div>);
-jest.mock('antd/lib/wave', () => <div />);
 
 describe('Login page', () => {
   it('renders as expected', () => {
